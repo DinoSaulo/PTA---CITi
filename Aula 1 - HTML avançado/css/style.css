@@ -1,0 +1,42 @@
+#divPai{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: gray;
+}
+#div1{
+    background-color: blue;
+    width: 200px;
+}
+#div2{
+    background-color: pink;
+    width: 200px;
+}
+#div3{
+    background-color: purple;
+    width: 200px;
+}
+
+
+
+.banner {
+    background-image: url("../images/imagem.jpg");
+    width: 100%;
+    height: 10%;
+}
+
+.setinha {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    animation-name: setinha;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+}
+
+@keyframes setinha {
+    0%   { top:0px; }
+    50%  { top:100px; }
+    100% { top:0px; }
+}
