@@ -1,50 +1,23 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="https://assets-cdn.github.com/favicon.ico">
-    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}" />
-    <title>Blog Django | CITi - PTA</title>
-</head>
-<body>
-    <!-- HEADER -->
-    <section class="header">
-        <div class="header__logo">
-            <img class="header__img" src="https://cin.ufpe.br/~pet/wiki/images/thumb/8/86/Logociti.png/300px-Logociti.png" alt="logo do CITi">
+{% block content %}
+<section class="posts">
+
+    <h2 class="posts__title_all-stories">All Stories</h2>
+
+    {% for post in posts %}
+        <div class="post__card">
+            <!-- https://docs.djangoproject.com/en/dev/ref/templates/builtins/#date -->
+            <span class="post__date">
+                CREATED ON {{post.created_date | date:'l - d.m.y' }} AT {{post.created_date | time:'H:i'}} / UPDATED ON {{post.updated_date | date:'d.m.y' }} AT {{post.updated_date | time:'H:i'}}
+            </span>
+            <h1 class="post__title">{{ post.title }}</h1>
+            <span class="post__author">
+                    WRITE BY @{{ post.author }}
+                </span>
+            <div class="post__text">{{ post.text }}</div>
         </div>
-        <span class="header__title">Blog Django</span>
-    </section>
+    {% endfor %}
 
-    <section class="posts">
-
-        <h2 class="posts__title_all-stories">All Stories</h2>
-        
-            <!--- aqui vão ficar os posts do blog -->
-      		{% for post in posts %}
-                <div class="post__card">
-                    <!-- https://docs.djangoproject.com/en/dev/ref/templates/builtins/#date -->
-                    <h1 class="post__title">{{ post.title }}</h1>
-                    <span class="post__author">
-                        ESCRITO POR @{{ post.author }}
-                    </span>
-                    <div class="post__date">
-                        CRIADO EM {{post.created_date | date:'d.m.y' }} AS {{post.created_date | time:'H:i'}} / ATUALIZADO EM {{post.updated_date | date:'d.m.y' }} AS {{post.updated_date | time:'H:i'}}
-                    </div>
-                    <div class="post__text">{{ post.text }}</div>
-                    
-                </div>
-            {% endfor %}
-    </section>
-
-    <footer class="footer">
-        <span>&copy; 2018</span>
-        <span>
-            Made with <i class="fas fa-code"></i> and <i class="far fa-heart"></i>
-        </span>
-    </footer>
-
-</body>
-</html>
+</section>
+{% endblock content %}

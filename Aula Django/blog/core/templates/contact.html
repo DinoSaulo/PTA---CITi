@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <form method='POST' class="contact_form">
+        {% csrf_token %}
+        <input placeholder='Nome' type='text' name='name'>
+        <input placeholder='E-mail' type='email' name='email'>
+        <textarea placeholder='Digite sua mensagem aqui' name='message'>
+        </textarea>
+        <button type='submit'>Enviar</button>
+
+    </form>
+
+{% endblock content %}
